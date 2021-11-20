@@ -1,4 +1,4 @@
-module github.com/l00p8/http-client
+module github.com/l00p8/xclient
 
 go 1.16
 

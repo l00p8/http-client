@@ -1,4 +1,4 @@
-package http_client
+package xclient
 
 import "net/http"
 
