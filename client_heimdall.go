@@ -3,8 +3,8 @@ package xclient
 import (
 	"time"
 
-	"github.com/gojektech/heimdall"
-	"github.com/gojektech/heimdall/hystrix"
+	"github.com/gojek/heimdall/v7"
+	"github.com/gojek/heimdall/v7/hystrix"
 )
 
 // TODO Create client from a factory with different type of clients

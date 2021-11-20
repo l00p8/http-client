@@ -8,7 +8,7 @@ import (
 
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 
-	"github.com/gojektech/heimdall/hystrix"
+	"github.com/gojek/heimdall/v7/hystrix"
 	"github.com/l00p8/tracer"
 	"go.opentelemetry.io/otel/codes"
 )

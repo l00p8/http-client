@@ -6,7 +6,7 @@ import (
 
 	"io"
 
-	"github.com/gojektech/heimdall/hystrix"
+	"github.com/gojek/heimdall/v7/hystrix"
 )
 
 type Client interface {
