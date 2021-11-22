@@ -33,7 +33,7 @@ func DefaultConfig() Config {
 		RequestThreshold: 10,
 		// Exponential Backoff Retry strategy
 		InitialTimeout: 2,
-		MaxTimeout:     10000,
+		MaxTimeout:     5000,
 		ExponentFactor: 2,
 		MaxJitter:      2,
 		RetryCount:     1,
