@@ -24,19 +24,19 @@ type Config struct {
 
 func DefaultConfig() Config {
 	return Config{
-		HttpTimeout: 1000,
+		HttpTimeout: 2500,
 		// Hystrix Circuit Breaker strategy
-		HystrixTimeout:   1100,
+		HystrixTimeout:   5100,
 		MaxConcurrent:    100,
 		ErrorThreshold:   25,
 		Sleep:            10,
 		RequestThreshold: 10,
 		// Exponential Backoff Retry strategy
 		InitialTimeout: 2,
-		MaxTimeout:     5000,
+		MaxTimeout:     10000,
 		ExponentFactor: 2,
 		MaxJitter:      2,
-		RetryCount:     2,
+		RetryCount:     1,
 		Transport:      http.DefaultTransport,
 	}
 }

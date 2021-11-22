@@ -11,6 +11,8 @@ import (
 	"github.com/gojek/heimdall/v7/hystrix"
 	"github.com/l00p8/tracer"
 	"go.opentelemetry.io/otel/codes"
+
+	chiMiddleware "github.com/go-chi/chi/middleware"
 )
 
 func WithTracing(service string, cfg Config) Client {
@@ -44,6 +46,10 @@ func (clt *clientWithTracing) Request(ctx context.Context, method string, url st
 	req.Header = headers
 	req = tracer.Inject(ctx, req)
 
+	xReqId, _ := ctx.Value(chiMiddleware.RequestIDKey).(string)
+	if xReqId != "" {
+		req.Header.Set("X-Request-Id", xReqId)
+	}
 	resp, err := clt.clt.Do(req)
 	if err != nil {
 		tracer.SpanFromContext(ctx).SetStatus(codes.Error, err.Error())
