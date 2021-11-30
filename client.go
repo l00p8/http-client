@@ -3,6 +3,7 @@ package xclient
 import (
 	"context"
 	"net/http"
+	"time"
 
 	"io"
 
@@ -14,7 +15,15 @@ type Client interface {
 }
 
 func New(service string, cfg Config) Client {
-	clt := newHystrixClient(service, cfg, nil)
+	base := cfg.Transport
+	if base == nil {
+		base = http.DefaultTransport
+	}
+	httpClt := &http.Client{
+		Transport: base,
+		Timeout:   time.Duration(cfg.HttpTimeout) * time.Millisecond,
+	}
+	clt := newHystrixClient(service, cfg, httpClt)
 	return &defaultClient{
 		clt: clt,
 	}
